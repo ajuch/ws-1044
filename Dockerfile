@@ -1,9 +1,9 @@
-﻿FROM microsoft/dotnet:2.2-sdk AS build-env
+﻿FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
 WORKDIR /app
 
 COPY . ./
-
-RUN dotnet publish -o out
+RUN dotnet clean
+RUN dotnet publish -o out -v Detailed
 
 FROM microsoft/dotnet:2.2.1-aspnetcore-runtime
 WORKDIR /app
